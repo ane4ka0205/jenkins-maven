@@ -9,9 +9,9 @@ node {
    stage('Build') {
       // Run the maven build
       if (isUnix()) {
-         sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore clean package'
+         sh '"{mvnHome}/bin/mvn" -Dmaven.test.failure.ignore clean package'
       } else {
-         bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore clean package/)
+         bat(/"${mvnHome}"\bin\mvn" -Dmaven.test.failure.ignore clean package/)
       }
    }
    stage('Post Job'){
@@ -21,4 +21,3 @@ node {
       archiveArtifacts 'index.jsp'
    }
 }
-
